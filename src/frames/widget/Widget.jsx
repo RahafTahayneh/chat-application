@@ -1,18 +1,18 @@
 import React from 'react';
-import { makeStyles} from "@material-ui/core";
-import { observer } from 'mobx-react';
-import { FramePortal } from '../../components/framePortal'
+import {makeStyles} from "@material-ui/core";
+import {observer} from 'mobx-react';
+import {FramePortal} from '../../components/framePortal'
 import theme from '../../theme';
 import WidgetContent from './WidgetContent'
 
-const useStyles = makeStyles((theme) => ({
-    root:{
-        height: '9vh',
-        width: '9vh',
+const useStyles = makeStyles(() => ({
+    root: {
+        height: '100%',
+        width: '100%',
         borderRadius: '50%',
         backgroundImage: 'linear-gradient(-225deg, rgb(80, 204, 204) 35%, rgb(69, 174, 202) 100%)',
     },
-    iframe:{
+    iframe: {
         height: '100%',
         width: '100%',
     }
@@ -20,13 +20,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Widget = observer(() => {
     const classes = useStyles()
-    return(
+    return (
         <div className={classes.root}>
             <FramePortal
                 className={classes.iframe}
                 theme={theme}
             >
-                <WidgetContent />
+                <WidgetContent/>
             </FramePortal>
         </div>
     )

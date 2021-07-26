@@ -1,15 +1,17 @@
 import React from 'react';
-import { makeStyles, Grid, TextField, Button } from "@material-ui/core";
+import {Button, Grid, makeStyles, TextField} from "@material-ui/core";
 import {observer} from "mobx-react";
 import SendIcon from '@material-ui/icons/Send';
+import {UserStore} from "../../../store/user";
+import {MessagesStore} from "../../../store/message";
 
-const useStyles = makeStyles((theme)=> ({
-        root:{
-            backgroundColor: '#fff',
-            borderTop: '2px solid #f2f5f8',
-            padding: 4,
-            borderRadius: '0px 0px 8px 8px'
-        },
+const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundColor: '#fff',
+        borderTop: '2px solid #f2f5f8',
+        padding: 4,
+        borderRadius: '0px 0px 8px 8px'
+    },
     inputBase: {
         transition: 'all 500ms ease-out',
         borderRadius: 2,
@@ -21,20 +23,43 @@ const useStyles = makeStyles((theme)=> ({
         lineHeight: 1.8,
         padding: theme.spacing(1.5, 2),
     },
-    btn:{
+    btn: {
         height: '2rem',
         fontSize: 22,
         width: '2rem',
-        color: ({disabled}) => disabled? 'rgba(0, 0, 0, 0.3)' : theme.palette.primary.main,
+        color: ({disabled}) => disabled ? 'rgba(0, 0, 0, 0.3)' : theme.palette.primary.main,
         '&:focus, &:hover': {
-           backgroundColor: 'unset !important'
+            backgroundColor: 'unset !important'
         },
+    },
+    icon:{
+        fontSize: '2rem'
     }
 }));
 
-const Footer = observer(()=> {
+const Footer = observer(() => {
     const [message, setMessage] = React.useState('');
     const classes = useStyles({disabled: !message});
+
+    const onKeyDown = (event)=>{
+        if(message){
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                event.stopPropagation();
+                onSubmit();
+            }
+        }
+
+    }
+
+    const onSubmit = () => {
+        const messageData = {
+            sender: UserStore.user.id,
+            message: message
+        }
+        void MessagesStore.addNewMessage(messageData);
+        setMessage('')
+    }
 
     return (
         <Grid container direction={'row'} alignItems={'center'} justify={'space-between'} className={classes.root}>
@@ -47,6 +72,7 @@ const Footer = observer(()=> {
                         setMessage(event.target.value);
                     }}
                     onBlur={(event) => setMessage(event.target.value)}
+                    onKeyDown={onKeyDown}
                     InputProps={{
                         className: classes.inputBase,
                         disableUnderline: true,
@@ -58,7 +84,8 @@ const Footer = observer(()=> {
                 />
             </Grid>
             <Grid item>
-                <Button variant={'text'} className={classes.btn} endIcon={<SendIcon className={classes.icon}/>} disabled={!message}/>
+                <Button variant={'text'} className={classes.btn} endIcon={<SendIcon className={classes.icon}/>} onClick={onSubmit}
+                        disabled={!message}/>
             </Grid>
         </Grid>
     )

@@ -11,13 +11,18 @@ const useStyles = makeStyles(() => ({
         height: '100%',
         width: '100%',
         borderRadius: 8,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        position: 'relative'
     },
     fullWidth:{
         width: '100%'
     },
     messagesBody:{
         flex:1
+    },
+    footer:{
+        position: 'absolute',
+        bottom: 0
     }
 }));
 
@@ -25,14 +30,14 @@ const MessageBox = observer(()=> {
     const classes = useStyles();
 
     return (
-        <Grid container direction={'column'} className={classes.root}>
+        <Grid container direction={'column'} wrap={'nowrap'} className={classes.root}>
            <Grid item className={classes.fullWidth}>
                 <Header />
            </Grid>
             <Grid item className={Classnames(classes.messagesBody, classes.fullWidth)}>
                 <MessagesContainer />
             </Grid>
-            <Grid item>
+            <Grid item className={Classnames(classes.fullWidth, classes.footer)}>
                 <Footer />
             </Grid>
         </Grid>

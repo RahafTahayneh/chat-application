@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, makeStyles, Drawer} from '@material-ui/core';
+import {Drawer, Grid, makeStyles} from '@material-ui/core';
 import Classnames from 'classnames';
 import ExpandMore from "./components/ExpandMore";
 import {useAui} from "../../context";
@@ -8,11 +8,10 @@ const drawerWidth = 180;
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        borderBottom: 'solid 2px #ebebeb',
         height: '100%'
     },
-    icon:{
-      height: 'fit-content'
+    icon: {
+        height: 'fit-content'
     },
     title: {
         fontWeight: 'bold',
@@ -21,13 +20,17 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         width: drawerWidth,
+        height: 'calc(100% - 124px)'
     },
+    paperAnchor: {
+        top: 72
+    }
 }));
 
 const CollapsableSection = ({
                                 className, children,
                             }) => {
-    const { container } = useAui();
+    const {container} = useAui();
     const [expanded, setExpanded] = React.useState(false);
     const onClick = () => {
         setExpanded(!expanded);
@@ -48,6 +51,7 @@ const CollapsableSection = ({
                     onClose={onClick}
                     classes={{
                         paper: classes.drawerPaper,
+                        paperAnchorRight: classes.paperAnchor
                     }}
                     ModalProps={{
                         keepMounted: true,

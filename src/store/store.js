@@ -1,6 +1,7 @@
 import { UiStore } from './ui';
 import { UserStore } from './user';
 import { AdminStore } from "./admin";
+import { MessagesStore } from "./message";
 
 /**
  * @desc this list of stores, will be automatically provided to MOBXProvider
@@ -8,5 +9,6 @@ import { AdminStore } from "./admin";
 export default {
     UiStore,
     UserStore,
-    AdminStore
+    AdminStore,
+    MessagesStore
 }

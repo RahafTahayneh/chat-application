@@ -1,6 +1,6 @@
 export const MESSAGES = [
     {
         sender: 'wfmvhyjf8',
-        message: 'Schedule an appointment for next week please!'
+        message: 'Hi, I want to schedule an appointment'
     },
 ]
