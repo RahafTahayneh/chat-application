@@ -1,14 +1,14 @@
 import {
     observable,
 } from 'mobx';
-import { USER } from './constant'
+import { ADMIN } from './constant'
 
-class UserStore {
-    @observable user = USER;
+class AdminStore {
+    @observable admin = ADMIN;
 
     constructor() {
-        this.user= USER
+        this.admin= ADMIN
     }
 }
 
-export default new UserStore();
+export default new AdminStore();

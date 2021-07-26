@@ -1,14 +1,12 @@
 import React from 'react';
 import {
-    createMuiTheme,
     makeStyles,
     StylesProvider,
-    ThemeOptions,
+    createTheme,
     ThemeProvider,
 } from '@material-ui/core/styles';
-import { Jss } from 'jss';
 import { CssBaseline } from '@material-ui/core';
-import { GamixProvider } from '@gamiphy/gamix-web/context';
+import { AuiProvider } from "../../context";
 
 const useStyles = makeStyles({
     '@global': {
@@ -28,7 +26,7 @@ const useStyles = makeStyles({
     },
 });
 
-const Content: React.FC = ({ children }) => {
+const Content = ({ children }) => {
     useStyles();
 
     return (
@@ -39,17 +37,11 @@ const Content: React.FC = ({ children }) => {
     );
 };
 
-type Props = {
-    window?: Window,
-    document: Document
-    jss?: Jss,
-    theme?: ThemeOptions,
-}
 
-const Portal: React.FC<Props> = ({
+const Portal= ({
     children, window, document, jss, theme,
 }) => (
-    <GamixProvider
+    <AuiProvider
         value={{
             window,
             container: document.body,
@@ -59,7 +51,7 @@ const Portal: React.FC<Props> = ({
             jss && (
                 <StylesProvider jss={jss}>
                     <ThemeProvider
-                        theme={createMuiTheme(theme)}
+                        theme={createTheme(theme)}
                     >
                         <Content>
                             {children}
@@ -68,7 +60,7 @@ const Portal: React.FC<Props> = ({
                 </StylesProvider>
             )
         }
-    </GamixProvider>
+    </AuiProvider>
 );
 
 export default Portal;

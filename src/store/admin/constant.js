@@ -1,9 +1,7 @@
-import img from './assets/img3.png'
-
-export const USER = {
-    id: 'wfmvhyjf8',
-    firstName: 'Rahaf',
-    lastName: 'Tahayneh',
-    age: 25,
-    avatar: img
+export const ADMIN = {
+    id: 'w9tolyr45',
+    messages: [
+        'Hi, How I can help you?',
+        'Would you like to schedule an appointment'
+    ]
 }

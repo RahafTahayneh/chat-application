@@ -7,8 +7,9 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 const useStyles = makeStyles((theme) => ({
     expand: {
-        transform: 'rotate(0deg)',
+        transform: 'rotate(-90deg)',
         color: '#222',
+        height: 'fit-content',
         paddingLeft: theme.spacing(0.5),
         marginBottom: `-${theme.spacing(0.8)}`,
         transition: theme.transitions.create('transform', {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 22,
     },
     expandOpen: {
-        transform: 'rotate(180deg)',
+        transform: 'rotate(90deg)',
     },
     arrow: {
         fontSize: 16,

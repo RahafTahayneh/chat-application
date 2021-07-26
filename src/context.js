@@ -1,14 +1,9 @@
 import React, { useContext } from 'react';
 
-export type GamixContext = {
-    window?: Window,
-    container?: HTMLElement
-}
-
-export const gamixContext = React.createContext<GamixContext>({
+export const auiContext = React.createContext({
     window: undefined,
     container: undefined,
 });
 
-export const GamixProvider = gamixContext.Provider;
-export const useGamix = (): GamixContext => useContext(gamixContext);
+export const AuiProvider = auiContext.Provider;
+export const useAui = () => useContext(auiContext);

@@ -1,41 +1,65 @@
 import React from 'react';
-import {
-    makeStyles, Collapse, Grid,
-} from '@material-ui/core';
+import { Grid, makeStyles, Drawer} from '@material-ui/core';
 import Classnames from 'classnames';
 import ExpandMore from "./components/ExpandMore";
+import {useAui} from "../../context";
+
+const drawerWidth = 180;
 
 const useStyles = makeStyles((theme) => ({
     root: {
         borderBottom: 'solid 2px #ebebeb',
+        height: '100%'
+    },
+    icon:{
+      height: 'fit-content'
     },
     title: {
         fontWeight: 'bold',
         fontSize: 20,
         color: '#222'
     },
+    drawerPaper: {
+        width: drawerWidth,
+    },
 }));
 
 const CollapsableSection = ({
-                                                 title, className, expand, children,
-                                             }) => {
-    const [expanded, setExpanded] = React.useState(expand || false);
+                                className, children,
+                            }) => {
+    const { container } = useAui();
+    const [expanded, setExpanded] = React.useState(false);
     const onClick = () => {
         setExpanded(!expanded);
     };
     const classes = useStyles();
+
     return (
-        <Grid container spacing={2} className={Classnames(classes.root, className)}>
-            <Grid item spacing={2} container direction="row" alignItems="center" justify="space-between">
-                <Grid item md={9} className={classes.title} container alignItems="center" wrap={'nowrap'}>
-                    {title}
-                    <ExpandMore expanded={expanded} onClick={onClick} />
-                </Grid>
+        <Grid container className={Classnames(classes.root, className)}>
+            <Grid item className={classes.icon}>
+                <ExpandMore expanded={expanded} onClick={onClick}/>
             </Grid>
-            <Grid item xs={12}>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    {children}
-                </Collapse>
+            <Grid item>
+                <Drawer
+                    container={container}
+                    variant="temporary"
+                    anchor={'right'}
+                    open={expanded}
+                    onClose={onClick}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                    ModalProps={{
+                        keepMounted: true,
+                    }}
+                >
+                    <>
+                        <Grid item className={classes.icon}>
+                            <ExpandMore expanded={expanded} onClick={onClick}/>
+                        </Grid>
+                        {children}
+                    </>
+                </Drawer>
             </Grid>
         </Grid>
 
