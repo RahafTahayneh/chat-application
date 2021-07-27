@@ -7,7 +7,7 @@
   <h2 align="center">Chaty</h2>
   <p align="center">A react-mobx responsive chat application to be embeded in different app applications, where the user can send messages to the admin and view the informtion of the admin who chatting with</p>
   <a href="https://github.com/RahafTahayneh/chat-application">
-    <p align="center"> <a href="https://ibb.co/5hFrKnp"><img src="https://i.ibb.co/Xx87Y30/Screen-Shot-2021-05-29-at-2-21-32-AM.png" alt="Screen-Shot-2021-05-29-at-2-21-32-AM" height="400" width="200" border="0"></a> </p>
+    <p align="center"> <a href="https://ibb.co/sggx1QH"><img src="https://i.im.ge/2021/07/27/DeKvh.png" alt="Screen-Shot-2021-05-29-at-2-21-32-AM" height="400" width="200" border="0"></a> </p>
   </a>
   <p align="center">
     <a href="https://github.com/RahafTahayneh/chat-application/issues">Report Bug</a>
