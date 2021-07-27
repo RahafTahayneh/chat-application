@@ -1,4 +1,10 @@
+import img from './assets/img3.png';
+
 export const ADMIN = {
     id: 'wfm67iuo8',
-   message:'Hi, How I can help you?',
+    firstName: 'Rahaf',
+    lastName: 'Tahayneh',
+    age: 25,
+    avatar: img,
+    message:'Hi, here Rahaf, How I can help you?',
 }

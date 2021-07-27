@@ -27,7 +27,7 @@ const Header = observer(() => {
     return (
         <Grid container alignItems={'center'} justify={'space-between'} className={classes.root}>
             <Grid item className={classes.name}>
-                Hi <strong> {UserStore.user.firstName} </strong>
+                Hi <strong> {`${UserStore.user.firstName || 'Guest'}`} </strong>
             </Grid>
             <Grid item>
                 <Avatar src={UserStore.user.avatar} className={classes.avatar} />

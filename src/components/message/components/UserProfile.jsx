@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, Grid, Avatar } from "@material-ui/core";
 import {observer} from "mobx-react";
-import {UserStore} from "../../../store/user";
+import { AdminStore } from '../../../store/admin'
 
 const useStyles = makeStyles((theme)=> ({
     root:{
@@ -26,13 +26,13 @@ const UserProfile = observer(()=> {
     return (
         <Grid container direction={'column'} alignItems={'flex-start'} className={classes.root}>
             <Grid item className={classes.label}>
-                <strong> Name </strong> {`${UserStore.user.firstName} ${UserStore.user.lastName}`}
+                <strong> Name </strong> {`${AdminStore.admin.firstName} ${AdminStore.admin.lastName}`}
             </Grid>
             <Grid item className={classes.label}>
-                <strong> Age </strong> {UserStore.user.age}
+                <strong> Age </strong> {AdminStore.admin.age}
             </Grid>
             <Grid item container justify={'center'} alignItems={'center'}>
-                <Avatar src={UserStore.user.avatar} className={classes.avatar} />
+                <Avatar src={AdminStore.admin.avatar} className={classes.avatar} />
             </Grid>
         </Grid>
     )

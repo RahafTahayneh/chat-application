@@ -1,9 +1,8 @@
-import img from './assets/img3.png'
+import profile from './assets/Profile.png';
 
 export const USER = {
     id: 'wfmvhyjf8',
-    firstName: 'Rahaf',
-    lastName: 'Tahayneh',
-    age: 25,
-    avatar: img
+    firstName: 'Esmat',
+    lastName: 'Nawahdah',
+    avatar: profile
 }
